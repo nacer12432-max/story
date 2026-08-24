@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale5.0">
+    <title>متجري البسيط</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>متجر المنتجات</h1>
+
+    <div class="card">
+        <h3>مناشف مطبخ (سرابيت)</h3>
+        <p>السعر: 150 د.ج</p>
+        <button onclick="buyItem('مناشف مطبخ')">شراء</button>
+    </div>
+
+    <div class="card">
+        <h3>كياسات حمام تقليدية</h3>
+        <p>السعر: 200 د.ج</p>
+        <button onclick="buyItem('كياسات حمام')">شراء</button>
+    </div>
+
+    <script>
+        function buyItem(itemName) {
+            alert('تمت إضافة ' + itemName + ' إلى السلة بنجاح!');
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجري البسيط</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 320px;
+            margin: 0 auto 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 320px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn-add {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn-order {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>متجر المنتجات</h2>
+        <p>🛒 عدد العناصر في السلة: <strong id="cart-count">0</strong></p>
+    </div>
+
+    <div class="card">
+        <h3>مناشف مطبخ (سرابيت)</h3>
+        <p>السعر: 150 د.ج</p>
+        <button class="btn-add" onclick="addToCart('مناشف مطبخ')">إضافة للسلة</button>
+    </div>
+
+    <div class="card">
+        <h3>كياسات حمام تقليدية</h3>
+        <p>السعر: 200 د.ج</p>
+        <button class="btn-add" onclick="addToCart('كياسات حمام')">إضافة للسلة</button>
+    </div>
+
+    <div class="card">
+        <button class="btn-order" onclick="sendWhatsApp()">إرسال الطلب عبر الواتساب 📱</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(itemName) {
+            cart.push(itemName);
+            document.getElementById('cart-count').innerText = cart.length;
+            alert('تمت إضافة ' + itemName + ' إلى السلة!');
+        }
+
+        function sendWhatsApp() {
+            if (cart.length === 0) {
+                alert('السلة فارغة! قم بإضافة منتجات أولاً.');
+                return;
+            }
+            
+            // ضع رقم الهاتف هنا بدلاً من الرقم الافتراضي (مع رمز الدولة مثلاً 213+)
+            let phoneNumber = "213000000000"; 
+            let message = "مرحباً، أود طلب المنتجات التالية:\n- " + cart.join("\n- ");
+            let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+            
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
